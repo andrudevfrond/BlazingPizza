@@ -1,0 +1,17 @@
+﻿<h3>New Pizza</h3>
+
+<div class="card" style="width: 25rem;">
+    <img src="img/pizzas/margherita.jpg" style="height:15rem;" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@PizzaName</h5>
+        <p class="card-text">@PizzaDescripction</p>
+        <a href="/" class="btn btn-primary">Pizzas</a>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string PizzaName { get; set; }
+    [Parameter]
+    public string PizzaDescripction { get; set; } = "The best pizza you're ever tasted.";
+}

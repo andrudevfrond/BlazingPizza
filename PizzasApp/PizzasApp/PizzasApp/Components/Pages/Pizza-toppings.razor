@@ -1,0 +1,11 @@
+﻿@page "/pizzas-toppings"
+
+<h1>Pizza_toppings</h1>
+
+<Pizza PizzaName="Hawaiian" PizzaDescripction="The one with pineapple"/>
+
+<PizzaTopping Topping="@(topping)" />
+
+@code{
+    PizzaItemsTopping topping = new PizzaItemsTopping() { Name = "Chilli Sauce", Ingredients = "Three kinds of chilli" };
+}
