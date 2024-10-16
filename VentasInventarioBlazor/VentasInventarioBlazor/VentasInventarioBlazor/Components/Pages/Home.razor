@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<style>
+    .center-card{
+        display:flex;
+        justify-content:center;
+    }
+</style>
+
+<PageTitle>Home</PageTitle>
+
+<HeaderPage/>
+
+<div class="row">
+    <EditForm Model="miventa"></EditForm>
+</div>
+
+<div class="row">
+    <GridVenta/>
+    <div class="col-4">
+        <!-- Services Section -->
+        <section id="services" class="services section">
+            <div class="container">
+                <div class="row center-card">
+                    <div class="col-lg-12" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-item position-relative">
+                            <div class="icon">
+                                <i class="bi bi-calendar4-week"></i>
+                            </div>
+                            <a href="service-details.html" class="stretched-link">
+                                <h3>Resumen</h3>
+                            </a>
+                            <p>Efectivo Total: ??</p>
+                            <p>Valor Transferencia: ??</p>
+                            <p>Numero de Ventas: ??</p>
+                            <a href="service-details.html" class="stretched-link"></a>
+                        </div>
+                    </div><!-- End Service Item -->
+                </div>
+            </div>
+        </section><!-- /Services Section -->
+    </div>
+</div>
+
+@code{
+    public Venta miventa = new();
+
+}
+
+
+

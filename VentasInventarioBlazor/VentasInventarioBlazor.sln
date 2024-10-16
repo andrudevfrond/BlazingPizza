@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasInventarioBlazor", "VentasInventarioBlazor\VentasInventarioBlazor\VentasInventarioBlazor.csproj", "{661A218D-947B-4811-8ED7-D4F5D66E918B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasInventarioBlazor.Client", "VentasInventarioBlazor\VentasInventarioBlazor.Client\VentasInventarioBlazor.Client.csproj", "{09AB72D8-F685-4C0D-B669-0687372A4A62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{661A218D-947B-4811-8ED7-D4F5D66E918B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661A218D-947B-4811-8ED7-D4F5D66E918B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661A218D-947B-4811-8ED7-D4F5D66E918B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661A218D-947B-4811-8ED7-D4F5D66E918B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09AB72D8-F685-4C0D-B669-0687372A4A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09AB72D8-F685-4C0D-B669-0687372A4A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09AB72D8-F685-4C0D-B669-0687372A4A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09AB72D8-F685-4C0D-B669-0687372A4A62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9868396E-4D70-49B2-8F8D-5DBA047D5319}
+	EndGlobalSection
+EndGlobal

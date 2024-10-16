@@ -1,0 +1,17 @@
+﻿@rendermode InteractiveAuto
+
+<h3>Pricipal</h3>
+
+<p>Today, we've sold this many pizzas:@number</p>
+<button class="btn btn-success" @onclick="IncrementSales">Buy a Pizza</button>
+
+@code {
+
+    private int number;
+    private void IncrementSales()
+    {
+        //SalesState.PizzasSoldToday++;
+        number++;
+
+    }
+}

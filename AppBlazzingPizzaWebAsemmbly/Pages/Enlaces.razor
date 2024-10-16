@@ -1,0 +1,55 @@
+﻿@page "/enlaces"
+@using System.Globalization
+
+<p>
+    Your email address is:
+    <input @bind="customerEmail" />
+</p>
+
+<h1>My favorite pizza is: @favPizza</h1>
+
+<p>
+    Enter your favorite pizza:
+    <input @bind-value="favPizza" @bind-value:event="oninput" />
+</p>
+<h1>Order a pizza for your birthday!</h1>
+
+<p>
+    Enter your birth date:
+    <input @bind="birthdate" @bind:format="dd-MM-yyyy" />
+</p>
+
+<h1>Pizza: @favPizza</h1>
+
+<p>Approval rating: @approvalRating</p>
+
+<p>
+    <label>
+        Set a new approval rating:
+        <input @bind="ApprovalRating" />
+    </label>
+</p>
+
+
+@code {
+    private string favPizza { get; set; } = "Margherita";
+    private string customerEmail = "user@contoso.com";
+    private DateTime birthdate { get; set; } = new(2000, 1, 1);
+
+    private decimal approvalRating = 1.0M;
+    private NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign;
+    private CultureInfo culture = CultureInfo.CreateSpecificCulture("es-ES");
+
+    private string ApprovalRating
+    {
+        get => approvalRating.ToString("0.000", culture);
+        set
+        {
+            if (Decimal.TryParse(value, style, culture, out var number))
+            {
+                approvalRating = Math.Round(number, 3);
+            }
+        }
+    }
+}
+

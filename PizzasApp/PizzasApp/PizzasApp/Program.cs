@@ -1,21 +1,21 @@
-using PizzasApp.Client.Pages;
 using PizzasApp.Components;
 using PizzasApp.Data;
+using PizzasApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
+builder.Services.AddRazorComponents(options => options.DetailedErrors = builder.Environment.IsDevelopment())
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-
-builder.Services.AddRazorPages(options => options.RootDirectory = "/Pages");
+builder.Services.AddRazorPages();
 
 // Services
 builder.Services.AddSingleton<PizzaService>();
 builder.Services.AddHttpClient();
 builder.Services.AddSqlite<PizzaStoreContext>("Data Source=pizza.db");
+builder.Services.AddScoped<PizzaSalesState>();
 
 var app = builder.Build();
 
@@ -53,7 +53,10 @@ using (var scope = scopeFactory.CreateScope()) {
 }
 
 app.MapRazorPages();
-app.MapBlazorHub();
+app.MapBlazorHub(config =>
+{
+    config.CloseOnAuthenticationExpiration = true;
+});
 // app.MapFallbackToPage("/Error");
 app.MapControllerRoute("default", "{controller=Home}/{action=index}/{id?}");
 

@@ -1,0 +1,35 @@
+﻿<div style="margin-top:3.5rem" class="col-8">
+    <table class="table">
+        <thead class="table table-success">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Nombre Cliente</th>
+                <th scope="col">Valor Producto</th>
+                <th scope="col">Cambio</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>mdo</td>
+                <td>mdo</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+@code{
+    
+    [Parameter]
+    public Venta miVenta = new();
+
+    public static List<Venta> ventas = new();
+
+
+
+}

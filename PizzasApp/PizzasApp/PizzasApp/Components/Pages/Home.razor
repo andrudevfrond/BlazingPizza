@@ -1,14 +1,15 @@
 ﻿@page "/"
-@using PizzasApp.Data;
+
 @inject PizzaService PizzaSvc
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
-
-
+@inject PizzaSalesState SalesState
 
 <PageTitle>Pizzas</PageTitle>
 
 <h1>Welcome to App Pizzas!</h1>
+
+<PizzasApp.Client.Pages.Pricipal/>
 
 <div class="main">
     <h1>Blazing Pizzas</h1>
@@ -17,7 +18,7 @@
         {
             @foreach (var special in specials)
             {
-                <li style="background-image: url('@special.ImageUrl')">
+                <li @onclick="@(() => ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@special.Name</span>
                         @special.Description
@@ -29,10 +30,33 @@
     </ul>
 </div>
 
+<ConfigurePizzaDialog Pizza="configuringPizza" />
+
+@if (showingConfigureDialog)
+{
+    <ConfigurePizzaDialog Pizza="configuringPizza" />
+}
+
 @code {
 
     List<PizzaSpecial> specials = new();
 
+    PizzaItem configuringPizza;
+    bool showingConfigureDialog;
+
     protected override async Task OnInitializedAsync() => specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
+
+    private async Task ShowConfigurePizzaDialog(PizzaSpecial special)
+    {
+        configuringPizza = new PizzaItem()
+            {
+                Special = special,
+                SpecialId = special.Id,
+                Size = PizzaItem.DefaultSize
+            };
+
+        showingConfigureDialog = true;
+        await Task.CompletedTask;
+    }
 
 }
