@@ -1,6 +1,12 @@
 @inherits LayoutComponentBase
 
-<div class="content">
-    @Body
+<div id="app">
+    <NavBarPizza />
+    <div class="content">
+        @Body
+    </div>
+    <footer>
+        &copy; Blazing Pizza @DateTime.UtcNow.Year
+    </footer>
 </div>
 

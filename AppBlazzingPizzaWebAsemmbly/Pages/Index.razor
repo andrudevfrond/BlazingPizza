@@ -1,15 +1,12 @@
 @page "/"
-
+@layout MainLayout
 @using BlazingPizza.Services;
 
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
 @inject OrderState OrderState
 
-<NavBarPizza />
-
 <div class="main">
-    <h1>Blazing Pizzas</h1>
     <ul class="pizza-cards">
         @if (specials != null)
 
