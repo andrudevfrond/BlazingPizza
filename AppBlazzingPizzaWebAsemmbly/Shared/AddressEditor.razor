@@ -41,15 +41,5 @@
 </div>
 
 @code {
-    private ElementReference startName;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await startName.FocusAsync();    
-        }    
-    }
-
     [Parameter] public Address Address { get; set; }
 }
