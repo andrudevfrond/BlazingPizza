@@ -5,39 +5,42 @@
 @inject NavigationManager NavigationManager
 
 <div class="main">
+    <EditForm Model="Order.DeliveryAddress" OnSubmit=CheckSubmitmission>
     <div class="checkout-cols">
         <div class="checkout-order-details">
-            <h4>Review Order</h4>
-            @foreach (var pizza in Order.Pizzas)
-            {
-                <p>
-                    <strong>
-                        @(pizza.Size)"
-                        @pizza.Special.Name
-                        (£@pizza.GetFormattedTotalPrice())
-                    </strong>
-                </p>    
-            }
-            <p>
-                <strong>
-                    Total price:
-                    £@Order.GetFormattedTotalPrice()
-                </strong>
-            </p>
+            <h4>Review order</h4>
+            <OrderReview Order="Order" />
+        </div>
+
+        <div class="checkout-delivery-address">
+            <h4>Deliver to...</h4>
+            <AddressEditor Address="Order.DeliveryAddress" />
         </div>
     </div>
+
     <button class="checkout-button btn btn-warning" @onclick="PlaceOrder" disabled=@isSubmitting>
         Place order
     </button>
+    </EditForm>
 </div>
+
+
 
 @code {
     Order Order => OrderState.Order;
 
     bool isSubmitting;
-    async Task PlaceOrder()
+
+
+    private async Task CheckSubmission()
     {
         isSubmitting = true;
+        await PlaceOrder();
+        isSubmitting = false;
+    }
+
+    async Task PlaceOrder()
+    {
         var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         OrderState.ResetOrder();
